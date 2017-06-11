@@ -1,0 +1,28 @@
+{
+	"apps":[
+		{
+			"name":"note",
+			"script":"app.js",
+			"env":{
+				"COMMON_VARIABLE":"true"
+			},
+			"env_production":{
+				"NODE_ENV":"production"
+			}
+		}
+	],
+	"deploy":{
+		"production":{
+			"user":"mdh",
+			"host":["47.93.11.59"],
+			"port":"1314",
+			"ref":"origin/master",
+			"repo":"git@github.com:Iamie6/note.git",
+			"path":"/www/note/production",
+			"ssh_options":"StrictHostKeyChecking=no",
+			"env":{
+				"NODE_ENV":"prodution"
+			}
+		}
+	}
+}
