@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文章列表</title>
+	<link rel="stylesheet" type="text/css" href="../static/header.css">
+	<link rel="stylesheet" type="text/css" href="../static/list.css">
+	<script src='../static/jquery.min.js'></script>
+</head>
+<body>
+	<header>
+		<a href="/add/add.html">发表文章</a>
+		<a href="/list/list.html">文章列表</a>
+	</header>
+	<ol>
+	</ol>
+	<div class="pages">
+	</div>
+	<script>
+		$.ajax({
+			url:'/lists',
+			data:{
+				pageNo:1,
+				pageSize:20
+			},
+			type:'get',
+			success:function(data){
+				var pageNum = data.totalPage;
+				var data =data.data;
+				console.log(data)
+				if(data.length == 0 ){
+					$('ol').html('暂无文章')
+					return;
+				}
+				var str = '';
+				var pages = '';
+				for(var i = 0; i<data.length; i++){
+					str+='<li><a href="/detail/detail.html#'+data[i].id+'">'+data[i].title+'</a></li>';
+				}
+				$('ol').html(str);
+				for(var i = 0; i<pageNum; i++){
+					pages+='<span>'+(i+1)+'</span>'
+				}
+				$('.pages').html(pages);
+			}
+		})
+	</script>
+</body>
+</html>

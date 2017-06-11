@@ -1,0 +1,8 @@
+.pages{
+	text-align: center;
+}
+.pages span{
+	padding:5px;
+	background: #ccc;
+	cursor: pointer;
+}

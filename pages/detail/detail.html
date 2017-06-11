@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文章列表</title>
+	<link rel="stylesheet" type="text/css" href="../static/header.css">
+	<link rel="stylesheet" type="text/css" href="../static/detail.css">
+	<script type="text/javascript" src='../static/jquery.min.js'></script>
+</head>
+<body>
+	<header>
+		<a href="/add/add.html">发表文章</a>
+		<a href="/list/list.html">文章列表</a>
+	</header>
+	<h3></h3>
+	<p></p>
+	<script type="text/javascript">
+		var id = window.location.href.split('#')[1];
+		if(!id){
+			$('h3').html('文章不存在');
+		}else{
+			$.ajax({
+				url:'/details',
+				data:{
+					id:id
+				},
+				type:'get',
+				success:function(data){
+					if(!data.data.title){
+						$('h3').html('文章不存在')
+						return;
+					}
+					$('h3').html(data.data.title)
+					$('p').html(data.data.content)
+				}
+			})
+		}
+	</script>
+</body>
+</html>
