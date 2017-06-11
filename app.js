@@ -5,8 +5,14 @@ const mongoose = require('mongoose')
 const article = require('./models/article')
 const port = process.env.PORT || 3000
 const app = express()
+const env = process.env.NODE_ENV || "development"
+const dbUrl = 'mongodb://127.0.0.1:12344/article'
 
-mongoose.connect('mongodb://127.0.0.1/article')
+if(env === 'development'){
+	dbUrl = 'mongodb://127.0.0.1/article'
+}
+
+mongoose.connect(dbUrl)
 
 app.listen(port)
 app.use(bodyParser.urlencoded({ extended: false }))
