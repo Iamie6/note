@@ -11,7 +11,8 @@ const articleSchema = new mongoose.Schema({
 			type:Date,
 			default: +Date.now()
 		}
-	}
+	},
+	hash:String
 })
 
 articleSchema.pre('save',function(next){
@@ -36,6 +37,9 @@ articleSchema.statics = {
 		return this
 			.findOne({id:id})
 			.exec(cb)
+	},
+	findByKey:function(hash,cb){
+		return this.findOne({hash:hash}).exec(cb)
 	}
 }
 module.exports = articleSchema

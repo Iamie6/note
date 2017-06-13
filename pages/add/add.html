@@ -39,6 +39,8 @@
 					method:'post',
 					success:function(data){
 						console.log('ok',data)
+						$('input')[0].value = '';
+						$('textarea')[0].value = '';
 					},
 					error:function(data){
 						console.log('err',data)
