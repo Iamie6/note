@@ -35,6 +35,14 @@ app.get('/',function(req,res){
 	    root: __dirname + '/pages/'
 	})
 })
+//test 创建文件
+app.get('/create/:name',function(req,res){
+	console.log('ok')
+	const name = req.params.name;
+	
+	res.send({msg:'ok'})
+})
+
 
 //文章列表接口
 app.get('/lists',function(req,res){
