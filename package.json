@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "work-gomeplus",
   "version": "1.0.0",
   "description": "A Vue.js project",
@@ -69,4 +70,29 @@
     "last 2 versions",
     "not ie <= 8"
   ]
+=======
+  "name": "note",
+  "version": "1.0.0",
+  "description": "方便自己记笔记",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iamie6/note.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iamie6/note/issues"
+  },
+  "homepage": "https://github.com/Iamie6/note#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "moment": "^2.18.1",
+    "mongoose": "^4.10.5"
+  }
+>>>>>>> a0bf848820338909d252a117cb391ba0b6ae34f2
 }

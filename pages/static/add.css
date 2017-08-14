@@ -1,0 +1,11 @@
+form {
+	width:100%;
+	text-align: center;
+}
+form div{
+	padding:10px 30px;
+}
+
+form div label{
+	vertical-align: top;
+}
