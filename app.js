@@ -1,13 +1,28 @@
 const express = require('express')
+const path = require('path')
+const fs = require('fs')
 const ArticalModel = require('./db/model/artical')
 const mongoose = require('mongoose')
 mongoose.promise = require('bluebird')
 const bodyParser = require('body-parser')
+
+const multer = require('multer')
+const picPath = 'imgdb'
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, picPath)
+    }
+})
+
+const upload = multer({storage: storage})
+
 const app = express()
 const port = 11111
 
 mongoose.connect('mongodb://127.0.0.1/artical',{useMongoClient:true})
 app.listen(port)
+
+app.use(express.static(path.join(__dirname)))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true ,limit:1000000}))
 
@@ -118,6 +133,16 @@ app.get('/api/delete/:id',(req,res)=>{
 })
 
 //图片上传
-app.post('/api/upload', (req,res)=>{
+app.post('/api/upload/img', upload.single('pic') , (req,res)=>{
+	console.log(req.file)
+    const mimetype = req.file.mimetype.split('/')[1]
+    const filename = req.file.filename 
+    const destination = req.file.destination
 
+    const oldpath = path.join(__dirname, destination, filename)
+    const newFileName = filename + '.' + mimetype
+    //改名
+    fs.renameSync(oldpath, path.join(__dirname, destination, newFileName))
+    
+    res.send({msg:'ok',code:0, src: '/imgdb/' + newFileName ,name:req.file.originalname})
 })

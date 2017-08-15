@@ -7,7 +7,8 @@
 			<el-form-item label="笔记内容" class="editor">
 				<mavon-editor ref="editor" style="height: 100%"
 					@save="save"
-					v-model='value'>
+					v-model="value"
+                    @imgAdd="imgAdd">
 					</mavon-editor>
 			</el-form-item>
 		</el-form>
@@ -107,11 +108,33 @@ export default {
     		})
     	},
     	imgAdd(index, file){
-            console.log('add: ',index)
+            const _this = this
+            const  formData = new FormData()
 
-            console.log('\n', file)
+            formData.append('pic', file)
 
-            this.$refs.editor.$imgAddByUrl(index,'https://work.pre.gomeplus.com/statics/css/img/download/logo.png')
+            axios({
+                    url: '/api/upload/img',
+                    data: formData,
+                    method:'post',
+                    headers:{
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then((data) => {
+                    const res = data.data
+                    if(res.code !== 0){
+                        _this.$refs.toolbar_left.$imgDelByFilename(index)
+                        return
+                    }
+                    console.log(res)
+                    
+                    _this.$refs.editor.$img2Url(index,res.src)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+
     	},
         imgDel(index){
             console.log('del: ', index)
