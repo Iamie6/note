@@ -110,6 +110,7 @@ app.post('/api/update/artical', checkArtical, (req,res) => {
 
 //文章列表
 app.get('/api/list',(req,res)=>{
+	console.log('list')
 	ArticalModel.find().then((arts)=>{
 		res.send({msg:'ok',code:0,data:arts})
 	})
