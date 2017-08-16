@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Add from '@/components/add'
-import List from '@/components/list'
-import Detail from '@/components/detail'
+const Add = () => import('@/components/add')
+const List = () => import('@/components/list')
+const Detail = () => import('@/components/detail')
 
 Vue.use(Router)
 

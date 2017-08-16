@@ -19,6 +19,7 @@
 //@imgAdd="imgAdd"
 //@imgDel="imgDel"
 import { mavonEditor } from 'mavon-editor'
+//const mavonEditor = () => import('./list.vue')
 import 'mavon-editor/dist/css/index.css'
 import axios from "axios"
 export default {
@@ -128,7 +129,7 @@ export default {
                         return
                     }
                     console.log(res)
-                    
+
                     _this.$refs.editor.$img2Url(index,res.src)
                 })
                 .catch((err)=>{

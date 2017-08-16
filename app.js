@@ -18,8 +18,12 @@ const upload = multer({storage: storage})
 
 const app = express()
 const port = 11111
+let dbURL = 'mongodb://127.0.0.1/artical'
 
-mongoose.connect('mongodb://127.0.0.1/artical',{useMongoClient:true})
+if(process.env.NODE_ENV == 'production'){
+	dbURL = 'mongodb://127.0.0.1:12344/note'
+}
+mongoose.connect(dbURL,{useMongoClient:true})
 app.listen(port)
 
 app.use(express.static(path.join(__dirname)))
@@ -79,7 +83,6 @@ app.post('/api/add/artical', checkArtical, (req,res) => {
 	})
 })
 
-
 //文章跟新
 app.post('/api/update/artical', checkArtical, (req,res) => {
 	const title = req.body.title
@@ -134,7 +137,6 @@ app.get('/api/delete/:id',(req,res)=>{
 
 //图片上传
 app.post('/api/upload/img', upload.single('pic') , (req,res)=>{
-	console.log(req.file)
     const mimetype = req.file.mimetype.split('/')[1]
     const filename = req.file.filename 
     const destination = req.file.destination
