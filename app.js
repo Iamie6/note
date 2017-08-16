@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 
 const app = express()
-const port = 11111
+const port = 3000
 let dbURL = 'mongodb://127.0.0.1/artical'
 
 if(process.env.NODE_ENV == 'production'){
