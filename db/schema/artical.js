@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
+mongoose.promise = require('bluebird')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 const ArticalSchema = new Schema({
 	title:String,
-	content: String,
+	render: String,
+	ctitle:String,
+	value:String,
 	user:{
 		type:String,
 		default:''

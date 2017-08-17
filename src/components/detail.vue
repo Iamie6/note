@@ -1,7 +1,7 @@
 <template>
  	<div>
- 		<h1 class="title">{{title}}</h1>
- 		<div class="artical-content markdown-body" v-html="content">{{content}}</div>
+ 		<h1 class="title">{{ctitle}}</h1>
+ 		<div class="artical-content markdown-body" v-html="render">{{render}}</div>
  	</div>
 </template>
 
@@ -10,8 +10,8 @@ import axios from "axios"
 export default {
 	data(){
 		return {
-			title:"",
-			content:""
+			ctitle:"",
+			render:""
 		}
 	},
 	created(){
@@ -21,16 +21,8 @@ export default {
 			if(res.code !== 0){
 
 			}
-			const regExp = /&lt;|&gt;/g
-			function replace(str){
-				if(str == '&lt;'){
-					return '<'
-				}else if(str == '&gt;'){
-					return '>'
-				}
-			}
-			this.title = res.data.title.replace(regExp,replace)
-			this.content = res.data.content.replace(regExp,replace)
+			this.ctitle = res.data.ctitle
+			this.render = res.data.render
 		}).catch((err) => {
 			console.log(err)
 		})

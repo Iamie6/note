@@ -29,11 +29,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api': {
-            target: 'http://127.0.0.1:11111',
+            target: 'http://127.0.0.1:3000',
             changeOrigin: true
          },
          '/imgdb': {
-            target: 'http://127.0.0.1:11111',
+            target: 'http://127.0.0.1:3000',
             changeOrigin: true
          }
     },

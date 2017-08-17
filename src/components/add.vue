@@ -36,7 +36,7 @@ export default {
     created(){
         this.id = this.$route.query.id
         if(this.id){
-            axios.get('/api/edit/'+this.id)
+            axios.get('/api/detail/'+this.id)
                 .then((data)=>{
                     const res = data.data
                     if(res.code !==0){
@@ -83,7 +83,7 @@ export default {
     			if(res.code !== 0 ){
                     this.$message({
                         type:'error',
-                        message: data.msg,
+                        message: res.msg,
                         showClose: false,
                         duration: 2000
                     })
@@ -96,7 +96,7 @@ export default {
                     duration: 2000,
                     onClose:function(){
                         _this.title = ''
-                        _this.content = ''
+                        _this.value = ''
                     }
                 })
     		}).catch((err) => {
