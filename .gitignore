@@ -1,6 +1,8 @@
 .DS_Store
 node_modules/
 dist/
+imgdb/
+!imgdb/.gitkeep
 
 npm-debug.log*
 yarn-debug.log*
