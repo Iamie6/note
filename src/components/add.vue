@@ -5,7 +5,7 @@
 				<el-input v-model="title"></el-input>
 			</el-form-item>
 			<el-form-item label="笔记内容" class="editor">
-				<mavon-editor ref="editor" style="height: 100%"
+				<mavon-editor ref="editor" style="height: 100%;text-align:left"
 					@save="save"
 					v-model="value"
                     @imgAdd="imgAdd">
