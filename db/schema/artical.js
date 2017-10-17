@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 mongoose.promise = require('bluebird')
 const Schema = mongoose.Schema
-const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 const ArticalSchema = new Schema({
