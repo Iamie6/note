@@ -149,7 +149,6 @@ export default {
 	}
     .editor .el-form-item__content{
         height: 500px;
-        text-align: center;
     }
     .editor .loading{
         font-size: 40px;
