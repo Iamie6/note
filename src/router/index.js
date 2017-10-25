@@ -3,6 +3,7 @@ import Router from 'vue-router'
 const Add = () => import('@/components/add')
 const List = () => import('@/components/list')
 const Detail = () => import('@/components/detail')
+const Bian = ()=> import('@/components/bian')
 
 Vue.use(Router)
 
@@ -24,6 +25,10 @@ export default new Router({
 		{
 			path: '/detail',
 			component: Detail
+		},
+		{
+			path: '/bianxing',
+			component: Bian
 		}
 	]
 })
